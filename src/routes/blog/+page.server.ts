@@ -1,12 +1,12 @@
 import type { PageServerLoad } from "./$types";
 
-export const load: PageServerLoad = async () => {
-    const modules = import.meta.glob("/src/lib/articles/*.md");
+export const load: PageServerLoad = async ({ parent }) => {
+    const { articles } = await parent();
 
-    const posts = Object.entries(modules)?.map(([path, module]) => {
-        const slug = path?.split("/").pop()?.replace(".md", "");
-        return { slug };
-    });
+    // 只需要 slug 資訊用於顯示文章列表
+    const posts = articles.map((article) => ({
+        slug: article.slug
+    }));
 
     return { posts };
 };

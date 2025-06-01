@@ -1,29 +1,20 @@
+import { read } from "$app/server";
 import { error } from "@sveltejs/kit";
 import type { PageServerLoad } from "./$types";
 
-export const load: PageServerLoad = async ({ params }) => {
+export const load: PageServerLoad = async ({ params, parent }) => {
     const { slug } = params;
+    const { articles } = await parent();
+
+    const article = articles.find((article) => article.slug === slug);
+
+    if (!article) {
+        error(404, "Post not found");
+    }
 
     try {
-        // 使用 import.meta.glob 來載入所有 markdown 檔案
-        const modules = import.meta.glob("/src/lib/articles/*.md", {
-            query: "?raw",
-            import: "default"
-        });
-
-        // 尋找對應的檔案
-        const modulePath = `/src/lib/articles/${slug}.md`;
-
-        if (!(modulePath in modules)) {
-            error(404, "Post not found");
-        }
-
-        // 載入檔案內容
-        const content = await modules[modulePath]();
-
-        return {
-            content
-        };
+        const response = read(article.fileUrl);
+        return { content: await response.text() };
     } catch (e) {
         error(404, "Post not found");
     }
