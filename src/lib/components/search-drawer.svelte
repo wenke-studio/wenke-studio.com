@@ -47,7 +47,9 @@
 
     <div class="space-y-2 py-4">
         {#each filteredLinks as link}
-            <Card size="xl" class="h-16 p-2" href={link.href}>{link.label}</Card>
+            <Card size="xl" class="h-16 p-2" href={link.href} onclick={() => (searchDrawer = true)}>
+                {link.label}
+            </Card>
         {/each}
     </div>
 </Drawer>

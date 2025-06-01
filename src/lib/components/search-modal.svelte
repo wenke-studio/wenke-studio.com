@@ -36,7 +36,9 @@
 
     <div class="space-y-2">
         {#each filteredLinks as link}
-            <Card size="xl" class="h-16 p-2" href={link.href}>{link.label}</Card>
+            <Card size="xl" class="h-16 p-2" href={link.href} onclick={() => (searchModal = false)}>
+                {link.label}
+            </Card>
         {/each}
     </div>
 </Modal>
