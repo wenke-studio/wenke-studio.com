@@ -19,10 +19,10 @@
     const { title, links }: HeaderProps = $props();
 </script>
 
-<header class="relative w-full">
+<header class="relative w-full border-b-2 border-gray-200 dark:border-gray-700">
     <Navbar>
         <NavBrand href="/" class="gap-2">
-            <Logo class="h-6 sm:h-9" />
+            <Logo class="ml-2 h-6 sm:h-9" />
             <Heading tag="h5">
                 {title}
             </Heading>
