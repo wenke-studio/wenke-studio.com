@@ -1,5 +1,6 @@
 <script lang="ts">
     import Main from "$lib/components/main.svelte";
+    import Sidebar from "$lib/components/sidebar.svelte";
     import { A, Card, Heading, Hr, P, Secondary } from "flowbite-svelte";
 
     const trending = [
@@ -119,4 +120,8 @@
             {/each}
         </div>
     </section>
+
+    {#snippet sidebar()}
+        <Sidebar />
+    {/snippet}
 </Main>

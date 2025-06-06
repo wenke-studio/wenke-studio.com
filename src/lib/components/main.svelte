@@ -1,6 +1,15 @@
+<script lang="ts" module>
+    import type { Snippet } from "svelte";
+
+    interface MainProps {
+        children: Snippet;
+        sidebar?: Snippet;
+    }
+</script>
+
 <script lang="ts">
-    import Sidebar from "./sidebar.svelte";
-    const { children } = $props();
+    import AdMobile from "./ad/ad-mobile.svelte";
+    const { children, sidebar }: MainProps = $props();
 </script>
 
 <main class="relative w-full px-4 py-8">
@@ -9,14 +18,12 @@
             <div class="md:pr-4">
                 {@render children()}
 
-                <div class="fixed inset-x-0 bottom-0 h-32 md:hidden">
-                    <div class="h-32 bg-gray-600">
-                        <div class="flex h-full items-center justify-center">AD</div>
-                    </div>
-                </div>
+                <AdMobile />
             </div>
 
-            <Sidebar />
+            {#if sidebar}
+                {@render sidebar()}
+            {/if}
         </div>
     </div>
 </main>
