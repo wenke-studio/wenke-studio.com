@@ -1,16 +1,9 @@
 <script lang="ts">
-    import { Badge, Heading, Hr, P, Secondary } from "flowbite-svelte";
+    import { A, Badge, Heading, Hr, Secondary } from "flowbite-svelte";
+    import AdSidebar from "./ad/ad-sidebar.svelte";
+    import CategoryCard from "./category-card.svelte";
 
-    const hashtag = [
-        "business",
-        "son",
-        "familey",
-        "father",
-        "technology",
-        "science",
-        "health",
-        "education"
-    ];
+    const { hashtags, categories } = $props();
 </script>
 
 <div class="hidden max-w-96 overflow-x-hidden pl-4 lg:block">
@@ -18,64 +11,41 @@
 
     <Hr />
 
-    <section id="hashtag">
-        <div class="divide-y border">
-            <div class="p-4">
-                <Heading tag="h5">Recommended Hashtag</Heading>
-            </div>
-            <div class="flex flex-wrap gap-4 p-4">
-                {#each hashtag as tag}
-                    <Badge href={`/blog/${tag}`} size="small" class="w-fit">
-                        #{tag}
-                    </Badge>
-                {/each}
-            </div>
-        </div>
-    </section>
+    <CategoryCard id="hashtag" title="Recommmend Hashtag">
+        {#each hashtags as hashtag}
+            <Badge href={`/hashtag/${hashtag.label}`} size="small" class="w-fit">
+                #{hashtag.label}
+            </Badge>
+        {/each}
+    </CategoryCard>
 
     <Hr />
 
-    <section id="recent">
-        <div class="divide-y border">
-            <div class="p-4">
-                <Heading tag="h5">Recent</Heading>
-            </div>
-            <div class="space-y-4 p-4">
-                {#each Array(4) as _}
-                    <div class="flex items-center gap-4">
-                        <div>
-                            <div class="h-12 w-12 rounded-full bg-gray-200"></div>
-                        </div>
-                        <div>
-                            <Heading tag="h6">Lorem ipsum dolor sit amet</Heading>
-                            <Secondary>2025-06-02</Secondary>
-                        </div>
-                    </div>
-                {/each}
-            </div>
-        </div>
-    </section>
+    <CategoryCard id="category" title="Categories" divClass="flex-col divide-y">
+        {#each categories as category}
+            <A
+                href="/category/{category.name}"
+                class="border-dash inline-block p-2 hover:border hover:border-gray-200"
+            >
+                <Heading tag="h6">{category.name}</Heading>
+                <Secondary>{category.description}</Secondary>
+            </A>
+        {/each}
+    </CategoryCard>
 
     <Hr />
 
-    <section id="topic">
-        <div class="divide-y border">
-            <div class="p-4">
-                <Heading tag="h5">Topic</Heading>
+    <CategoryCard id="recent" title="Recent">
+        {#each Array(4) as _}
+            <div class="flex items-center gap-4">
+                <div>
+                    <div class="h-12 w-12 rounded-full bg-gray-200"></div>
+                </div>
+                <div>
+                    <Heading tag="h6">Lorem ipsum dolor sit amet</Heading>
+                    <Secondary>2025-06-02</Secondary>
+                </div>
             </div>
-            <div class="space-y-4 p-4">
-                {#each Array(4) as _}
-                    <div class="flex items-center gap-4">
-                        <div>
-                            <div class="h-12 w-12 rounded-full bg-gray-200"></div>
-                        </div>
-                        <div>
-                            <Heading tag="h6">Lorem ipsum</Heading>
-                            <P>Lorem ipsum dolor sit amet consectetur adipisicing elit.</P>
-                        </div>
-                    </div>
-                {/each}
-            </div>
-        </div>
-    </section>
+        {/each}
+    </CategoryCard>
 </div>

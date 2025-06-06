@@ -44,6 +44,8 @@
         }
     ];
     const latest = trending;
+
+    const { data } = $props();
 </script>
 
 <Main>
@@ -122,6 +124,6 @@
     </section>
 
     {#snippet sidebar()}
-        <Sidebar />
+        <Sidebar {...data.sidebar} />
     {/snippet}
 </Main>
