@@ -1,0 +1,218 @@
+@reference "tailwindcss";
+
+/* 基本文章容器樣式 */
+article {
+    @apply bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-gray-100;
+    @apply leading-relaxed;
+}
+
+/* 標題樣式 */
+article h1 {
+    @apply mt-8 mb-6 text-4xl font-bold;
+    @apply text-gray-700 dark:text-gray-300;
+    @apply border-b border-gray-300 pb-3 dark:border-gray-700;
+}
+
+article h2 {
+    @apply mt-8 mb-4 text-3xl font-semibold;
+    @apply text-gray-600 dark:text-gray-400;
+    @apply border-b border-gray-200 pb-2 dark:border-gray-800;
+}
+
+article h3 {
+    @apply mt-6 mb-3 text-2xl font-semibold;
+    @apply text-gray-600 dark:text-gray-400;
+}
+
+article h4 {
+    @apply mt-4 mb-2 text-xl font-semibold;
+    @apply text-gray-800 dark:text-gray-200;
+}
+
+article h5 {
+    @apply mt-4 mb-2 text-lg font-semibold;
+    @apply text-gray-700 dark:text-gray-300;
+}
+
+article h6 {
+    @apply mt-4 mb-2 text-base font-semibold;
+    @apply text-gray-600 dark:text-gray-400;
+}
+
+/* 段落和文字樣式 */
+article p {
+    @apply mb-4 leading-7;
+    @apply text-gray-800 dark:text-gray-200;
+}
+
+article strong,
+article b {
+    @apply font-semibold text-gray-900 dark:text-gray-100;
+}
+
+article em,
+article i {
+    @apply text-gray-700 italic dark:text-gray-300;
+}
+
+/* 連結樣式 */
+article a {
+    @apply text-gray-600 dark:text-gray-400;
+    @apply hover:text-gray-700 dark:hover:text-gray-300;
+    @apply underline decoration-gray-500/30 hover:decoration-gray-500/60;
+    @apply transition-colors duration-200;
+}
+
+/* 清單樣式 */
+article ul,
+article ol {
+    @apply mb-4 pl-6;
+}
+
+article ul {
+    @apply list-disc;
+}
+
+article ol {
+    @apply list-decimal;
+}
+
+article li {
+    @apply mb-2 text-gray-800 dark:text-gray-200;
+}
+
+article li > ul,
+article li > ol {
+    @apply mt-2 mb-0;
+}
+
+/* 引用樣式 */
+article blockquote {
+    @apply border-l-4 border-emerald-500 dark:border-emerald-400;
+    @apply mb-4 py-2 pl-4;
+    @apply bg-emerald-50 dark:bg-emerald-900/20;
+    @apply text-gray-700 dark:text-gray-300;
+    @apply italic;
+}
+
+article blockquote p {
+    @apply mb-2 last:mb-0;
+}
+
+/* 程式碼樣式 */
+article code {
+    @apply bg-gray-200 dark:bg-gray-800;
+    @apply text-gray-700 dark:text-gray-300;
+    @apply rounded px-1.5 py-0.5 font-mono text-sm;
+}
+
+article pre {
+    @apply bg-gray-200 dark:bg-gray-800;
+    @apply border border-gray-300 dark:border-gray-700;
+    @apply mb-4 overflow-x-auto rounded-lg p-4;
+}
+
+article pre code {
+    @apply bg-transparent text-gray-800 dark:text-gray-200;
+    @apply p-0 text-sm;
+}
+
+/* 表格樣式 */
+article table {
+    @apply mb-4 w-full border-collapse;
+    @apply border border-gray-300 dark:border-gray-700;
+    @apply overflow-hidden rounded-lg;
+}
+
+article th {
+    @apply bg-gray-100 dark:bg-gray-900/50;
+    @apply text-gray-800 dark:text-gray-200;
+    @apply px-4 py-3 text-left font-semibold;
+    @apply border-b border-gray-300 dark:border-gray-700;
+}
+
+article td {
+    @apply border-b border-gray-200 px-4 py-3 dark:border-gray-800;
+    @apply text-gray-700 dark:text-gray-300;
+}
+
+article tr:last-child td {
+    @apply border-b-0;
+}
+
+article tr:nth-child(even) {
+    @apply bg-gray-50 dark:bg-gray-900/50;
+}
+
+/* 水平分隔線 */
+article hr {
+    @apply border-0 border-t border-gray-300 dark:border-gray-700;
+    @apply my-8;
+}
+
+/* 圖片樣式 */
+article img {
+    @apply h-auto max-w-full rounded-lg shadow-md;
+    @apply border border-gray-200 dark:border-gray-700;
+    @apply my-4;
+}
+
+/* 標記文字 */
+article mark {
+    @apply bg-emerald-200 dark:bg-emerald-800;
+    @apply text-emerald-900 dark:text-emerald-100;
+    @apply rounded px-1;
+}
+
+/* 刪除線 */
+article del,
+article s {
+    @apply text-gray-500 line-through dark:text-gray-500;
+}
+
+/* 下劃線 */
+article ins,
+article u {
+    @apply underline decoration-emerald-500 dark:decoration-emerald-400;
+    @apply text-emerald-700 dark:text-emerald-300;
+}
+
+/* 小字 */
+article small {
+    @apply text-sm text-gray-600 dark:text-gray-400;
+}
+
+/* 上標和下標 */
+article sup,
+article sub {
+    @apply text-xs;
+}
+
+article sup {
+    @apply align-super;
+}
+
+article sub {
+    @apply align-sub;
+}
+
+/* 鍵盤輸入樣式 */
+article kbd {
+    @apply bg-gray-100 dark:bg-gray-800;
+    @apply border border-gray-300 dark:border-gray-600;
+    @apply rounded px-2 py-1 font-mono text-sm;
+    @apply shadow-sm;
+}
+
+/* 定義清單 */
+article dl {
+    @apply mb-4;
+}
+
+article dt {
+    @apply mb-1 font-semibold text-gray-900 dark:text-gray-100;
+}
+
+article dd {
+    @apply mb-2 ml-4 text-gray-700 dark:text-gray-300;
+}

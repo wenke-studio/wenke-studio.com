@@ -9,38 +9,38 @@
             group: "Business",
             date: "2025-01-01",
             description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.",
-            href: "/blog/trending_1"
+            href: "/posts/trending_1"
         },
         {
             title: "Trending 2",
             group: "Family",
             date: "2025-01-01",
             description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.",
-            href: "/blog/trending_2"
+            href: "/posts/trending_2"
         },
         {
             title: "Trending 3",
             group: "Technology",
             date: "2025-01-01",
-            href: "/blog/trending_3"
+            href: "/posts/trending_3"
         },
         {
             title: "Trending 4",
             group: "Technology",
             date: "2025-01-01",
-            href: "/blog/trending_4"
+            href: "/posts/trending_4"
         },
         {
             title: "Trending 5",
             group: "Technology",
             date: "2025-01-01",
-            href: "/blog/trending_5"
+            href: "/posts/trending_5"
         },
         {
             title: "Trending 6",
             group: "Technology",
             date: "2025-01-01",
-            href: "/blog/trending_6"
+            href: "/posts/trending_6"
         }
     ];
     const latest = trending;
@@ -52,22 +52,22 @@
     <section id="Editor's Pick" class="relative w-full">
         <hgroup class="mb-4 flex justify-between gap-2">
             <Heading tag="h5">作者精選</Heading>
-            <A href="/blog/editor_pick">更多</A>
+            <A href="/posts/editor_pick">更多</A>
         </hgroup>
         <div class="grid grid-cols-1 gap-4 lg:grid-cols-2 lg:grid-rows-2">
-            <Card href="/blog/editor_pick_1" class="row-span-2 h-96 p-4" size="xl">
+            <Card href="/posts/editor_pick_1" class="row-span-2 h-96 p-4" size="xl">
                 <div class="flex flex-col gap-2">
                     <Heading tag="h5">Editor's Pick 1</Heading>
                     <Secondary>Business</Secondary>
                 </div>
             </Card>
-            <Card href="/blog/editor_pick_2" class="hidden p-4 lg:block" size="xl">
+            <Card href="/posts/editor_pick_2" class="hidden p-4 lg:block" size="xl">
                 <div class="flex flex-col gap-2">
                     <Heading tag="h5">Editor's Pick 2</Heading>
                     <Secondary>Family</Secondary>
                 </div>
             </Card>
-            <Card href="/blog/editor_pick_3" class="hidden p-4 lg:block" size="xl">
+            <Card href="/posts/editor_pick_3" class="hidden p-4 lg:block" size="xl">
                 <div class="flex flex-col gap-2">
                     <Heading tag="h5">Editor's Pick 3</Heading>
                     <Secondary>Technology</Secondary>
@@ -81,7 +81,7 @@
     <section id="trending" class="relative w-full">
         <hgroup class="mb-4 flex justify-between gap-2">
             <Heading tag="h5">熱門文章</Heading>
-            <A href="/blog/trending">更多</A>
+            <A href="/posts/trending">更多</A>
         </hgroup>
         <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
             {#each trending as item}
@@ -103,7 +103,7 @@
     <section id="latest" class="relative w-full">
         <hgroup class="mb-4 flex justify-between gap-2">
             <Heading tag="h5">最新</Heading>
-            <A href="/blog/latest">查看全部</A>
+            <A href="/posts/latest">查看全部</A>
         </hgroup>
         <div class="grid grid-cols-1 gap-4">
             {#each latest as item}

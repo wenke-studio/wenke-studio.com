@@ -11,9 +11,9 @@
 
     <List class="space-y-4">
         {#each data.hashtag.articles as article}
-            <Card href="/blog/{article.title}" size="xl" class="p-4">
+            <Card href="/posts/{article.title}" size="xl" class="p-4">
                 <Heading tag="h5" class="mb-2">{article.title}</Heading>
-                <Secondary>/blog/{article.title}</Secondary>
+                <Secondary>/posts/{article.title}</Secondary>
             </Card>
         {/each}
     </List>
