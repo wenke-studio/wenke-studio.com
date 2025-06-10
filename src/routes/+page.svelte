@@ -1,48 +1,7 @@
 <script lang="ts">
     import Main from "$lib/components/main.svelte";
     import Sidebar from "$lib/components/sidebar.svelte";
-    import { A, Badge, Card, Heading, Hr, P, Secondary } from "flowbite-svelte";
-
-    const trending = [
-        {
-            title: "Trending 1",
-            group: "Business",
-            date: "2025-01-01",
-            description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.",
-            href: "/posts/trending_1"
-        },
-        {
-            title: "Trending 2",
-            group: "Family",
-            date: "2025-01-01",
-            description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.",
-            href: "/posts/trending_2"
-        },
-        {
-            title: "Trending 3",
-            group: "Technology",
-            date: "2025-01-01",
-            href: "/posts/trending_3"
-        },
-        {
-            title: "Trending 4",
-            group: "Technology",
-            date: "2025-01-01",
-            href: "/posts/trending_4"
-        },
-        {
-            title: "Trending 5",
-            group: "Technology",
-            date: "2025-01-01",
-            href: "/posts/trending_5"
-        },
-        {
-            title: "Trending 6",
-            group: "Technology",
-            date: "2025-01-01",
-            href: "/posts/trending_6"
-        }
-    ];
+    import { A, Badge, Card, Heading, Hr, P } from "flowbite-svelte";
 
     const { data } = $props();
 </script>
@@ -51,27 +10,24 @@
     <section id="Editor's Pick" class="relative w-full">
         <hgroup class="mb-4 flex justify-between gap-2">
             <Heading tag="h5">作者精選</Heading>
-            <A href="/posts/editor_pick">更多</A>
+            <A href="/posts/">更多</A>
         </hgroup>
         <div class="grid grid-cols-1 gap-4 lg:grid-cols-2 lg:grid-rows-2">
-            <Card href="/posts/editor_pick_1" class="row-span-2 h-96 p-4" size="xl">
+            <Card href={`/posts/${data.featured[0].title}`} class="row-span-2 h-96 p-4" size="xl">
                 <div class="flex flex-col gap-2">
-                    <Heading tag="h5">Editor's Pick 1</Heading>
-                    <Secondary>Business</Secondary>
+                    <Heading tag="h5">{data.featured[0].title}</Heading>
+                    <!-- <Secondary>{data.featured[0].c.label}</Secondary> -->
                 </div>
             </Card>
-            <Card href="/posts/editor_pick_2" class="hidden p-4 lg:block" size="xl">
-                <div class="flex flex-col gap-2">
-                    <Heading tag="h5">Editor's Pick 2</Heading>
-                    <Secondary>Family</Secondary>
-                </div>
-            </Card>
-            <Card href="/posts/editor_pick_3" class="hidden p-4 lg:block" size="xl">
-                <div class="flex flex-col gap-2">
-                    <Heading tag="h5">Editor's Pick 3</Heading>
-                    <Secondary>Technology</Secondary>
-                </div>
-            </Card>
+
+            {#each data.featured.slice(1, 2) as article}
+                <Card href={`/posts/${article.title}`} class="hidden p-4 lg:block" size="xl">
+                    <div class="flex flex-col gap-2">
+                        <Heading tag="h5">{article.title}</Heading>
+                        <!-- <Secondary>{article.category.label}</Secondary> -->
+                    </div>
+                </Card>
+            {/each}
         </div>
     </section>
 
@@ -80,18 +36,21 @@
     <section id="trending" class="relative w-full">
         <hgroup class="mb-4 flex justify-between gap-2">
             <Heading tag="h5">熱門文章</Heading>
-            <A href="/posts/trending">更多</A>
+            <A href="/posts/">更多</A>
         </hgroup>
         <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
-            {#each trending as item}
-                <Card href={item.href} class="h-fit p-4" size="xl">
+            {#each data.popular.slice(0, 4) as article, index}
+                <Card
+                    href={`/posts/${article.title}`}
+                    class="h-fit p-4"
+                    size="xl"
+                    horizontal={index >= 2}
+                >
                     <div class="flex flex-col gap-2">
-                        <Heading tag="h5">{item.title}</Heading>
-                        <Secondary>{item.group}</Secondary>
+                        <Heading tag="h5">{article.title}</Heading>
+                        <!-- <Secondary>{article.group}</Secondary> -->
                     </div>
-                    {#if item.description}
-                        <P class="min-h-64">{item.description}</P>
-                    {/if}
+                    <!-- <P class="min-h-64">{article.description}</P> -->
                 </Card>
             {/each}
         </div>

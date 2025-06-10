@@ -1,15 +1,16 @@
-import { env } from "$env/dynamic/private";
-import { genApiKey } from "$lib/auth";
+import { fetchData } from "$lib/auth";
 import type { PageServerLoad } from "./$types";
 
 export const load: PageServerLoad = async ({ fetch }) => {
-    const apiKey = genApiKey();
-    const response = await fetch(`${env.API_SERVICE_URL}/api/articles/`, {
-        headers: { "x-api-key": apiKey }
-    });
-    if (!response.ok) return { articles: [] };
+    const response = await Promise.all([
+        fetchData("articles"),
+        fetchData("articles/featured"),
+        fetchData("articles/popular")
+    ]);
 
-    const data = await response.json();
-    console.log(data);
-    return { articles: data.items };
+    return {
+        articles: response[0],
+        featured: response[1],
+        popular: response[2]
+    };
 };
