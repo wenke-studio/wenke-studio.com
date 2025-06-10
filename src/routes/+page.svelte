@@ -1,7 +1,7 @@
 <script lang="ts">
     import Main from "$lib/components/main.svelte";
     import Sidebar from "$lib/components/sidebar.svelte";
-    import { A, Card, Heading, Hr, P, Secondary } from "flowbite-svelte";
+    import { A, Badge, Card, Heading, Hr, P, Secondary } from "flowbite-svelte";
 
     const trending = [
         {
@@ -43,7 +43,6 @@
             href: "/posts/trending_6"
         }
     ];
-    const latest = trending;
 
     const { data } = $props();
 </script>
@@ -103,16 +102,20 @@
     <section id="latest" class="relative w-full">
         <hgroup class="mb-4 flex justify-between gap-2">
             <Heading tag="h5">最新</Heading>
-            <A href="/posts/latest">查看全部</A>
+            <A href="/posts">查看全部</A>
         </hgroup>
         <div class="grid grid-cols-1 gap-4">
-            {#each latest as item}
-                <Card href={item.href} class="h-fit p-4" size="xl">
+            {#each data.articles.slice(0, 4) as item}
+                <Card href={`/posts/${item.title}`} class="h-fit p-4" size="xl">
                     <div class="flex flex-col justify-between gap-2 md:flex-row">
                         <div class="">
-                            <P class="mb-2 text-emerald-600 dark:text-emerald-500">{item.group}</P>
                             <Heading tag="h5">{item.title}</Heading>
                             <P>{item.description}</P>
+                            <div class="mt-4 flex gap-2">
+                                {#each item.hashtags as hashtag}
+                                    <Badge>#{hashtag.label}</Badge>
+                                {/each}
+                            </div>
                         </div>
                         <div>
                             <div class="h-16 w-16 bg-gray-300"></div>
@@ -124,6 +127,6 @@
     </section>
 
     {#snippet sidebar()}
-        <Sidebar {...data.sidebar} />
+        <Sidebar hashtags={data.hashtags} categories={data.categories} />
     {/snippet}
 </Main>
