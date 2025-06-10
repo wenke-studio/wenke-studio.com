@@ -13,9 +13,9 @@
             <A href="/posts/">更多</A>
         </hgroup>
         <div class="grid grid-cols-1 gap-4 lg:grid-cols-2 lg:grid-rows-2">
-            <Card href={`/posts/${data.featured[0].title}`} class="row-span-2 h-96 p-4" size="xl">
+            <Card href={`/posts/${data.featured[0]?.title}`} class="row-span-2 h-96 p-4" size="xl">
                 <div class="flex flex-col gap-2">
-                    <Heading tag="h5">{data.featured[0].title}</Heading>
+                    <Heading tag="h5">{data.featured[0]?.title}</Heading>
                     <!-- <Secondary>{data.featured[0].c.label}</Secondary> -->
                 </div>
             </Card>
