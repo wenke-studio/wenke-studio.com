@@ -35,7 +35,8 @@
 
     <Hr />
 
-    <CategoryCard id="recent" title="Recent">
+    <!-- User Feedback -->
+    <!-- <CategoryCard id="recent" title="Recent">
         {#each Array(4) as _}
             <div class="flex items-center gap-4">
                 <div>
@@ -47,5 +48,5 @@
                 </div>
             </div>
         {/each}
-    </CategoryCard>
+    </CategoryCard> -->
 </div>
